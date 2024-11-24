@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message CarRequest {
+  string name = 1;
+  string carType = 2;
+}
+
+message CarResponse {
+  int64 id = 1;
+  string name = 2;
+}
+
+service CarService {
+    rpc AddCar(CarRequest) returns (CarResponse);
+}
