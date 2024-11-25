@@ -10,6 +10,6 @@ message CarTypeResponse {
   string value = 2;
 }
 
-service CarType {
+service CarTypeService {
   rpc AddNewCarType(CarTypeRequest) returns (CarTypeResponse) {};
 }
