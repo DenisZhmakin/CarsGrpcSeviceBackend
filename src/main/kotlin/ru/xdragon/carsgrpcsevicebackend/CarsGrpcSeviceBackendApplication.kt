@@ -4,15 +4,15 @@ import io.grpc.Server
 import io.grpc.ServerBuilder
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import ru.xdragon.carsgrpcsevicebackend.grpc.CarTypeGrpc
 
-import ru.xdragon.carsgrpcsevicebackend.service.CarTypeService
 
 @SpringBootApplication
 class CarsGrpcSeviceBackendApplication
 
 class GrpcServer(private val port: Int) {
 	private val server: Server = ServerBuilder.forPort(port)
-		.addService(CarTypeService())
+		.addService(CarTypeGrpc())
 		.build()
 
 	fun start() {
@@ -20,13 +20,9 @@ class GrpcServer(private val port: Int) {
 		println("Server started, listening on $port")
 		Runtime.getRuntime().addShutdownHook(Thread {
 			println("Received Shutdown Request")
-			this.stop()
+			server.shutdown()
 			println("Successfully stopped the server")
 		})
-	}
-
-	private fun stop() {
-		server.shutdown()
 	}
 
 	fun blockUntilShutdown() {

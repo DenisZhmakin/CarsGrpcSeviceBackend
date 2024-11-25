@@ -31,6 +31,7 @@ val grpcKotlinVersion = "1.4.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
 	implementation("org.jetbrains.kotlin:kotlin-stdlib")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
@@ -38,6 +39,7 @@ dependencies {
 	implementation("io.grpc:grpc-protobuf:$grpcVersion")
 	implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
 	implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
+	testImplementation("io.projectreactor:reactor-test")
 	runtimeOnly("io.grpc:grpc-netty-shaded:$grpcVersion")
 
 	runtimeOnly("org.postgresql:postgresql")
